@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Email List</title>
+</head>
+<body>
+<h1>Email Subscriptions</h1>
+<a href="/emails/register">Add New Email</a>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="email : ${emails}">
+        <td th:text="${email.id}"></td>
+        <td th:text="${email.email}"></td>
+        <td>
+            <a th:href="@{/emails/edit/{id}(id=${email.id})}">Edit</a>
+            <a th:href="@{/emails/delete/{id}(id=${email.id})}">Delete</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
